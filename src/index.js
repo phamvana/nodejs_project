@@ -4,6 +4,7 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
+const route = require('./routes');
 
 //sattic --> xử lý file tĩnh
 app.use(express.static(path.join(__dirname,'public')));
@@ -18,14 +19,7 @@ app.engine('hbs',handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname,'resourse\\views'));
 
+// Routes init
+route(app);
 
-app.get('/',(req,res)=>{
-    return res.render('home');
-});
-
-
-app.get('/new',(req,res)=>{
-    return res.render('view');
-});
-
-app.listen(port, ()=>console.log(`Trang web ddang chay http://localhost:${port}`));
+app.listen(port, ()=>console.log(`Trang web dang chay http://localhost:${port}`));
