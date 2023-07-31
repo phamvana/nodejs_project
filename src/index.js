@@ -7,19 +7,24 @@ const port = 3000;
 const route = require('./routes');
 
 //sattic --> xử lý file tĩnh
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // HTTP logger
 app.use(morgan('combined'));
 
 // Template engine
-app.engine('hbs',handlebars.engine({
-    extname: '.hbs'
-}));
+app.engine(
+  'hbs',
+  handlebars.engine({
+    extname: '.hbs',
+  }),
+);
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname,'resourse\\views'));
+app.set('views', path.join(__dirname, 'resourse\\views'));
 
 // Routes init
 route(app);
 
-app.listen(port, ()=>console.log(`Trang web dang chay http://localhost:${port}`));
+app.listen(port, () =>
+  console.log(`Trang web dang chay http://localhost:${port}`),
+);
