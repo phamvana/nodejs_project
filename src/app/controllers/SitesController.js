@@ -1,7 +1,12 @@
+const Post = require('../models/Post');
+
 class SitesController {
   // [GET] /new
   index(req, res) {
-    res.render('home');
+    res.json({
+      name: 'kiểm tra',
+    });
+    // res.render('home');
   }
 
   // [GET] /search
